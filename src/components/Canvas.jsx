@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 //How to specifically set it so it uses pencil when u select pencil and how to fill when u select fill
+//comment and document function paths
 
 class Canvas extends Component {
   constructor(props) {
@@ -17,13 +18,12 @@ class Canvas extends Component {
   prevPos = { offsetX: 0, offsetY: 0 };
 
   onMouseDown({ nativeEvent }) {
-    //if thjs.prob is pencil
-    // do what it has now
-    //
+    //if this.prob is pencil { }
+    // do what it does now
+    //else{
+      //fill  -- //logic to go here
+    //}
     this.StrokeStyle = this.props.selectedColor.hex;
-    console.log(this.props.selectedTool);
-    console.log(this.StrokeStyle)
-    console.log(this.props.selectedColor.hex);
     const { offsetX, offsetY } = nativeEvent;
     this.isPainting = true;
     this.prevPos = { offsetX, offsetY };
@@ -31,7 +31,6 @@ class Canvas extends Component {
 
   onMouseMove({ nativeEvent }) {
     if (this.isPainting) {
-      //console.log(this.props.selectedColor.hex);
       const { offsetX, offsetY } = nativeEvent;
       const offSetData = { offsetX, offsetY };
       this.position = {
@@ -64,16 +63,24 @@ class Canvas extends Component {
 
 
   componentDidMount() {
-    console.log(this.props.selectedTool)
-    this.canvas.width = 800;
-    this.canvas.height = 800;
+    this.canvas.width = window.innerWidth*.5;
+    this.canvas.height = window.innerHeight*.5;
     this.ctx = this.canvas.getContext('2d');
     this.ctx.lineJoin = 'round';
     this.ctx.lineCap = 'round';
     this.ctx.lineWidth = 5;
-
-
   }
+
+  componentDidUpdate() {
+    this.StrokeStyle = this.props.selectedColor.hex;
+    this.canvas.width = window.innerWidth*(this.props.selectedWidth/100);
+    this.canvas.height = window.innerHeight*(this.props.selectedHeight/100);
+    this.ctx = this.canvas.getContext('2d');
+    this.ctx.lineJoin = 'round';
+    this.ctx.lineCap = 'round';
+    this.ctx.lineWidth = 5;
+  }
+
 
   render() {
     return (

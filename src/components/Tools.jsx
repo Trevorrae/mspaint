@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import { PaintTools } from './Paint';
 
 class Tools extends Component {
-  constructor(props) {
-    super(props);
 
-  }
 
 
 
