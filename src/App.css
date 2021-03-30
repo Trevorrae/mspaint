@@ -1,0 +1,30 @@
+body {
+  font-family: 'Roboto Condensed', serif;
+}
+.main {
+  display: flex;
+  justify-content: center;
+}
+
+.color-guide {
+  margin: 20px 40px;
+}
+
+h5 {
+  margin-bottom: 10px;
+}
+
+.pencil {
+  padding: 7px 15px;
+  border-radius: 4px;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  background: #ffffff;
+  margin: 10px 0;
+}
+
+.fill {
+  background: #ffffff;
+  color: white;
+}
