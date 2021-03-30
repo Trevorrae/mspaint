@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import Canvas from './Canvas';
 import Tools from './Tools';
+import  Colour  from './Colour';
 
 export const PaintTools = {
     Pencil: 0,
@@ -30,6 +31,7 @@ class Paint extends Component {
           <div className="color-guide">
             <h5>Tool Selecter</h5>
           <Tools setTool={this.setTool} />
+          <Colour />
           </div>
           <Canvas selectedTool={this.state.selectedTool}/>
         </div>

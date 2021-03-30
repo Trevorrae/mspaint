@@ -45,6 +45,7 @@ class Canvas extends Component {
   }
 
   paint(prevPos, currPos, strokeStyle) {
+    console.log(strokeStyle)
     const { offsetX, offsetY } = currPos;
     const { offsetX: x, offsetY: y } = prevPos;
 
