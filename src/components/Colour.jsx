@@ -1,23 +1,26 @@
 import React from 'react'
-import { SketchPicker } from 'react-color'
+import { SketchPicker } from 'react-color';
 
-class Colour extends React.Component {
+class Color extends React.Component {
     state = {
-        userStrokeStyle: '#000',
-    };
-  
-    handleChangeComplete = (color) => {
-        console.log(color)
-      this.setState({ userStrokeStyle: color.hex });
-    };
+        selectedColor: '#fff',
+      };
+      handleChangeComplete = (color) => {
+        this.setState({ selectedColor: color.hex });
+        this.props.setColor(color);
+      }; 
   
     render() {
       return (
-        <SketchPicker
-          color={ this.state.userStrokeStyle }
-          onChangeComplete={ this.handleChangeComplete }
+          <div>
+          <p>Colour Selector</p>
+          <p>Select a Colour to Begin Drawing</p>
+          <SketchPicker
+        color={ this.state.selectedColor }
+        onChangeComplete={ this.handleChangeComplete } 
         />
+        </div>
       );
     }
   }
-export default Colour
+export default Color

@@ -1,17 +1,19 @@
 import React, { Component, Fragment } from 'react';
 import Canvas from './Canvas';
 import Tools from './Tools';
-import  Colour  from './Colour';
+import  Color  from './Colour';
 
 export const PaintTools = {
     Pencil: 0,
     Fill: 1,
   }
+
 class Paint extends Component {
   constructor(props) {
     super(props);
     this.state = {
         selectedTool: PaintTools.Pencil,
+        selectedColor: "#FC0000"
     }
   }
 
@@ -20,7 +22,10 @@ class Paint extends Component {
     this.setState({selectedTool: tool});
   }
 
-
+  setColor = (color) => {
+    console.log(color)
+  this.setState({selectedColor: color});
+}
 
 
   render() {
@@ -31,9 +36,9 @@ class Paint extends Component {
           <div className="color-guide">
             <h5>Tool Selecter</h5>
           <Tools setTool={this.setTool} />
-          <Colour />
+          <Color setColor={this.setColor}/>
           </div>
-          <Canvas selectedTool={this.state.selectedTool}/>
+          <Canvas selectedTool={this.state.selectedTool} selectedColor={this.state.selectedColor}/>
         </div>
       </Fragment>
     );

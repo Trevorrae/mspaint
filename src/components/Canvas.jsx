@@ -12,7 +12,7 @@ class Canvas extends Component {
 
   }
   isPainting = false;
-  userStrokeStyle = '#ffffff';
+  StrokeStyle = "#FC0000";
   line = [];
   prevPos = { offsetX: 0, offsetY: 0 };
 
@@ -20,6 +20,10 @@ class Canvas extends Component {
     //if thjs.prob is pencil
     // do what it has now
     //
+    this.StrokeStyle = this.props.selectedColor.hex;
+    console.log(this.props.selectedTool);
+    console.log(this.StrokeStyle)
+    console.log(this.props.selectedColor.hex);
     const { offsetX, offsetY } = nativeEvent;
     this.isPainting = true;
     this.prevPos = { offsetX, offsetY };
@@ -27,6 +31,7 @@ class Canvas extends Component {
 
   onMouseMove({ nativeEvent }) {
     if (this.isPainting) {
+      //console.log(this.props.selectedColor.hex);
       const { offsetX, offsetY } = nativeEvent;
       const offSetData = { offsetX, offsetY };
       this.position = {
@@ -34,7 +39,7 @@ class Canvas extends Component {
         stop: { ...offSetData },
       };
       this.line = this.line.concat(this.position);
-      this.paint(this.prevPos, offSetData, this.userStrokeStyle);
+      this.paint(this.prevPos, offSetData, this.StrokeStyle);
     }
   }
 
@@ -45,7 +50,6 @@ class Canvas extends Component {
   }
 
   paint(prevPos, currPos, strokeStyle) {
-    console.log(strokeStyle)
     const { offsetX, offsetY } = currPos;
     const { offsetX: x, offsetY: y } = prevPos;
 
